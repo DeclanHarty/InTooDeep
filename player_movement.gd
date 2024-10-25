@@ -13,8 +13,9 @@ func _physics_process(delta: float) -> void:
 	if input:
 		velocity.x = move_toward(velocity.x, sign(input.x) * SPEED, ACCELERATION * delta)
 		velocity.y = move_toward(velocity.y, sign(input.y) * SPEED, ACCELERATION * delta)
-	else:
+	
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 		velocity.y = move_toward(velocity.y, 0, FRICTION * delta)
+
 
 	move_and_slide()
