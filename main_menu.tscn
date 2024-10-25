@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://cawu11wck61he"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_b6f24"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cxxyi"]
+font_size = 61
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b6f24")
+metadata/_edit_lock_ = true
+
+[node name="Top" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 359.0
+metadata/_edit_lock_ = true
+
+[node name="Title" type="Label" parent="Top"]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 359.0
+text = "IN TOO DEEP
+the official for real in too deep"
+label_settings = SubResource("LabelSettings_cxxyi")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bottom" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 359.0
+offset_right = 1152.0
+offset_bottom = 648.0
+metadata/_edit_lock_ = true
+
+[node name="Play" type="Button" parent="Bottom"]
+layout_mode = 0
+offset_left = 241.0
+offset_top = 40.0
+offset_right = 448.0
+offset_bottom = 247.0
+text = "Play the video game"
+
+[node name="Exit" type="Button" parent="Bottom"]
+offset_left = 693.0
+offset_top = 40.0
+offset_right = 900.0
+offset_bottom = 247.0
+text = "No i dont want to
+play the video game"
+
+[connection signal="pressed" from="Bottom/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Bottom/Exit" to="." method="_on_exit_pressed"]
