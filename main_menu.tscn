@@ -44,14 +44,14 @@ offset_left = 241.0
 offset_top = 40.0
 offset_right = 448.0
 offset_bottom = 247.0
-text = "Play the video game"
+text = "play the video game"
 
 [node name="Exit" type="Button" parent="Bottom"]
 offset_left = 693.0
 offset_top = 40.0
 offset_right = 900.0
 offset_bottom = 247.0
-text = "No i dont want to
+text = "no i dont want to
 play the video game"
 
 [connection signal="pressed" from="Bottom/Play" to="." method="_on_play_pressed"]
