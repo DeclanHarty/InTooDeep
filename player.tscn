@@ -1,10 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://bsiuke4a1y2ao"]
 
 [ext_resource type="Script" path="res://player_movement.gd" id="1_khcek"]
+[ext_resource type="Texture2D" uid="uid://b0j3pjwr7hnfw" path="res://Assets/pixil-frame-0.png" id="2_fgmjf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmlwu"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0yjgh"]
 
 [node name="Player" type="Node2D"]
 
@@ -15,5 +14,6 @@ script = ExtResource("1_khcek")
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_pmlwu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_0yjgh")
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture_filter = 1
+texture = ExtResource("2_fgmjf")
