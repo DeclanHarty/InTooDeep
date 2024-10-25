@@ -1,18 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsiuke4a1y2ao"]
+[gd_scene load_steps=4 format=3 uid="uid://bsiuke4a1y2ao"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hemjw"]
+[ext_resource type="Script" path="res://player_movement.gd" id="1_khcek"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_giseh"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmlwu"]
 
-[node name="Player" type="Node3D"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0yjgh"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_hemjw")
+[node name="Player" type="Node2D"]
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.533611, 0)
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_khcek")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+rotation = -1.5708
+shape = SubResource("CapsuleShape2D_pmlwu")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("CapsuleShape3D_giseh")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_0yjgh")
