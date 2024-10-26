@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 		rotation += rot_v * delta
 	else:
 		rot_v = 0;
+		velocity = Vector2(0,0)
 
 	move_and_slide()
 "
@@ -35,6 +36,7 @@ radius = 2.0
 height = 16.0
 
 [node name="Glowstick" type="Node2D"]
+z_index = 2
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 material = SubResource("CanvasItemMaterial_cqa23")
