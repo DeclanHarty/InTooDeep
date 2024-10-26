@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsiuke4a1y2ao"]
+[gd_scene load_steps=8 format=3 uid="uid://cx1al2871st5b"]
 
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_khcek"]
 [ext_resource type="Texture2D" uid="uid://b0j3pjwr7hnfw" path="res://Assets/player.png" id="2_fgmjf"]
@@ -9,22 +9,20 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmlwu"]
 
-[node name="Player" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 collision_mask = 6
 script = ExtResource("1_khcek")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_pmlwu")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_fgmjf")
 script = ExtResource("3_23rrk")
 
-[node name="Flashlight" type="PointLight2D" parent="CharacterBody2D"]
+[node name="Flashlight" type="PointLight2D" parent="."]
 position = Vector2(244, 0)
 blend_mode = 2
 shadow_enabled = true
@@ -32,9 +30,9 @@ shadow_item_cull_mask = 2
 texture = ExtResource("3_df32m")
 script = ExtResource("5_ysap6")
 
-[node name="LocalLight" type="PointLight2D" parent="CharacterBody2D"]
+[node name="LocalLight" type="PointLight2D" parent="."]
 texture = ExtResource("3_pms1j")
 texture_scale = 0.52
 
-[connection signal="direction_changed" from="CharacterBody2D" to="CharacterBody2D/Sprite2D" method="_on_character_body_2d_direction_changed"]
-[connection signal="direction_changed" from="CharacterBody2D" to="CharacterBody2D/Flashlight" method="_on_character_body_2d_direction_changed"]
+[connection signal="direction_changed" from="." to="Sprite2D" method="_on_character_body_2d_direction_changed"]
+[connection signal="direction_changed" from="." to="Flashlight" method="_on_character_body_2d_direction_changed"]
