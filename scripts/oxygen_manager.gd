@@ -32,7 +32,7 @@ func _process(delta: float):
 	if (is_in_water == true):
 		_is_depleting = true
 		
-	elif (is_in_water != false):
+	elif (is_in_water == false):
 		_is_depleting = false
 
 	if (_is_depleting):
