@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d28wvocurp7vo"]
+[gd_scene load_steps=6 format=3 uid="uid://d28wvocurp7vo"]
 
-[ext_resource type="Texture2D" uid="uid://3odkux05gumy" path="res://Assets/glowstick.png" id="1_o6fbv"]
+[ext_resource type="Texture2D" uid="uid://c2aevouebhh8" path="res://Assets/glowstick.png" id="1_o6fbv"]
 [ext_resource type="Texture2D" uid="uid://5kim15eni4k7" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_xuiu7"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cqa23"]
+blend_mode = 1
 
 [sub_resource type="GDScript" id="GDScript_3etbr"]
 script/source = "extends CharacterBody2D
@@ -34,6 +37,7 @@ height = 16.0
 [node name="Glowstick" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+material = SubResource("CanvasItemMaterial_cqa23")
 script = SubResource("GDScript_3etbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
