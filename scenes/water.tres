@@ -1,0 +1,13 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dy1eyjgr7bwdy"]
+
+[ext_resource type="Texture2D" uid="uid://cd2qrfdb1bwdj" path="res://Assets/water_tile.png" id="1_exell"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1opa1"]
+texture = ExtResource("1_exell")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[resource]
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_1opa1")
