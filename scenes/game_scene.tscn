@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=10 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
 [ext_resource type="PackedScene" uid="uid://4rbdgp2kpva1" path="res://scenes/maze_walls.tscn" id="1_tmx8u"]
@@ -8,9 +8,33 @@
 [ext_resource type="Script" path="res://scripts/water_detection.gd" id="4_6p7kl"]
 [ext_resource type="PackedScene" uid="uid://cmc6arkgj2dmv" path="res://scenes/water.tscn" id="6_e3t84"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qeg80"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sltc4"]
+size = Vector2(199.727, 106.825)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3puc1"]
 
 [node name="GameScene" type="Node2D"]
+
+[node name="WaterDetection" type="Area2D" parent="."]
+position = Vector2(146, -278)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_6p7kl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterDetection"]
+position = Vector2(-8.94614, 2.74365)
+rotation = -1.57157
+scale = Vector2(1.34444, 1.51737)
+shape = SubResource("RectangleShape2D_sltc4")
+
+[node name="WaterDetection2" type="Area2D" parent="."]
+position = Vector2(435, -1241)
+script = ExtResource("4_6p7kl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WaterDetection2"]
+position = Vector2(-1.06665, -1.48218)
+rotation = -1.57157
+shape = SubResource("RectangleShape2D_sltc4")
 
 [node name="MazeWalls" parent="." instance=ExtResource("1_tmx8u")]
 process_physics_priority = 1
@@ -24,24 +48,22 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="WaterDetection" type="Area2D" parent="Player"]
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("4_6p7kl")
+[node name="Area2D" type="Area2D" parent="Player"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/WaterDetection"]
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_qeg80")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+shape = SubResource("RectangleShape2D_3puc1")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 z_index = -1
 texture = ExtResource("2_njtht")
 
 [node name="Icon" type="Sprite2D" parent="."]
+visible = false
 z_index = 1
 position = Vector2(686, -41)
 scale = Vector2(1.89062, 2.5625)
@@ -51,9 +73,15 @@ texture = ExtResource("3_702yu")
 modulate = Color(1, 1, 1, 0.341176)
 position = Vector2(-113, -309)
 scale = Vector2(5.2646, 5.2646)
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]
-[connection signal="body_entered" from="Player/WaterDetection" to="Player/WaterDetection" method="_on_body_entered"]
-[connection signal="body_exited" from="Player/WaterDetection" to="Player/WaterDetection" method="_on_body_exited"]
-[connection signal="waterStateChanged" from="Player/WaterDetection" to="OxygenManager" method="_on_water_detection_water_state_changed"]
+[connection signal="body_entered" from="Player/Area2D" to="WaterDetection" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Player/Area2D" to="WaterDetection" method="_on_area_2d_body_exited"]
 [connection signal="child_entered_tree" from="Sprite2D" to="MazeWalls" method="_on_sprite_2d_child_entered_tree"]
