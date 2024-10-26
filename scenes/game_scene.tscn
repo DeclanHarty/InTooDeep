@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=14 format=3 uid="uid://bxdkdln1id0pk"]
 
-[ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
+[ext_resource type="PackedScene" uid="uid://cx1al2871st5b" path="res://scenes/player.tscn" id="1_a3g5g"]
 [ext_resource type="Script" path="res://scripts/oxygen_manager.gd" id="1_pcyim"]
 [ext_resource type="PackedScene" uid="uid://4rbdgp2kpva1" path="res://scenes/maze_walls.tscn" id="1_tmx8u"]
 [ext_resource type="Texture2D" uid="uid://bkan4ybqgutri" path="res://Assets/cave-background-xmrf3cnk7aa9t79a.jpg" id="2_njtht"]
@@ -12,8 +12,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sltc4"]
 size = Vector2(199.727, 106.825)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3puc1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqvey"]
 bg_color = Color(0, 0, 0, 1)
@@ -71,10 +69,7 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="Area2D" type="Area2D" parent="Player"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-shape = SubResource("RectangleShape2D_3puc1")
+[node name="Area2D2" type="Area2D" parent="Player"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
@@ -108,6 +103,7 @@ offset_bottom = 324.0
 script = ExtResource("8_mf8gn")
 
 [node name="MaxOxygenBar" type="ProgressBar" parent="GameUI"]
+layout_mode = 0
 offset_left = 48.0
 offset_top = 19.0
 offset_right = 236.0
@@ -147,6 +143,4 @@ texture = ExtResource("8_wc5j5")
 [connection signal="oxygen_changed" from="OxygenManager" to="GameUI" method="_on_oxygen_manager_oxygen_changed"]
 [connection signal="permanent_oxygen_changed" from="OxygenManager" to="GameUI" method="_on_oxygen_manager_permanent_oxygen_changed"]
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]
-[connection signal="body_entered" from="Player/Area2D" to="WaterDetection" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Player/Area2D" to="WaterDetection" method="_on_area_2d_body_exited"]
 [connection signal="child_entered_tree" from="Sprite2D" to="MazeWalls" method="_on_sprite_2d_child_entered_tree"]

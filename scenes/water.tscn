@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=4 uid="uid://cmc6arkgj2dmv"]
 
-[ext_resource type="TileSet" uid="uid://dy1eyjgr7bwdy" path="res://Assets/water.tres" id="1_nla3h"]
+[ext_resource type="TileSet" uid="uid://cfu21d6xgrc6e" path="res://Assets/water.tres" id="1_nla3h"]
 
 [node name="Water" type="Node2D"]
 
