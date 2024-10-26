@@ -15,6 +15,6 @@ func _ready() -> void:
 func _input(event):
 	if event.is_action_pressed("drop_glowstick") and num_of_glowsticks > 0:
 		var glowstick := glowstick_scene.instantiate()
-		glowstick.get_child(0).position = get_parent().get_node("Player/CharacterBody2D").position
+		glowstick.get_child(0).position = get_parent().get_node("Player").position
 		add_child(glowstick)
 		num_of_glowsticks -= 1
