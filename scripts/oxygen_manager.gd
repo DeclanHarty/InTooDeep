@@ -1,7 +1,8 @@
 class_name OxygenManager
 extends Node
 
-signal oxygen_changed(oxygen: int)
+signal oxygen_changed(oxygen: float)
+signal permanent_oxygen_changed(oxygen: float)
 
 @export var oxygen_max: int
 @export var permanent_oxygen_depletion_per_seconds: float
@@ -26,6 +27,8 @@ func _ready():
 
 func _process(delta: float):
 	permanent_oxygen_tank -= permanent_oxygen_depletion_per_seconds * delta
+	permanent_oxygen_tank = max(permanent_oxygen_tank, 0)
+	permanent_oxygen_changed.emit(permanent_oxygen_tank)
 		
 	# the oxygen tank MUST fill or deplete
 	if is_depleting:
