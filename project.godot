@@ -14,7 +14,6 @@ config/name="InTooDeep"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
-<<<<<<<HEADrun/main_scene="res://player.tscn"
 
 [dotnet]
 
