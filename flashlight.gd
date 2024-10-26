@@ -14,14 +14,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	rotation = atan(position.y/position.x)
+	rotation = move_toward(rotation,  abs(atan(position.y/position.x)), LIGHT_ROTATION_SPEED)
 
 
 func _on_character_body_2d_direction_changed(velocity: Vector2) -> void:
-	if(sign(velocity.x) != 0 and sign(velocity.x) != current_direction):
-		#position.x = -position.x
-		scale.x = -scale.x
-		current_direction = sign(velocity.x)
+	#if(sign(velocity.x) != 0 and sign(velocity.x) != current_direction):
+		##position.x = -position.x
+		#scale.x = -scale.x
+		#current_direction = sign(velocity.x)
 		
 	if(velocity):
 		position = velocity.normalized() * LIGHT_DISTANCE_FROM_PLAYER
