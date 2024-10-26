@@ -1,24 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=10 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
+[ext_resource type="Script" path="res://scripts/oxygen_manager.gd" id="1_pcyim"]
 [ext_resource type="PackedScene" uid="uid://4rbdgp2kpva1" path="res://scenes/maze_walls.tscn" id="1_tmx8u"]
-[ext_resource type="PackedScene" uid="uid://dwmelutiyxgl6" path="res://scenes/oxygen_manager.tscn" id="2_n8it6"]
 [ext_resource type="Texture2D" uid="uid://bkan4ybqgutri" path="res://Assets/cave-background-xmrf3cnk7aa9t79a.jpg" id="2_njtht"]
 [ext_resource type="Texture2D" uid="uid://krxmiayby7xl" path="res://icon.svg" id="3_702yu"]
 [ext_resource type="Script" path="res://scripts/water_detection.gd" id="4_6p7kl"]
 [ext_resource type="PackedScene" uid="uid://cmc6arkgj2dmv" path="res://scenes/water.tscn" id="6_e3t84"]
+[ext_resource type="Texture2D" uid="uid://brdq5y8hwcggt" path="res://Assets/oxygen_ui.png" id="8_wc5j5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qeg80"]
 
 [node name="GameScene" type="Node2D"]
+
+[node name="OxygenManager" type="Node" parent="."]
+script = ExtResource("1_pcyim")
 
 [node name="MazeWalls" parent="." instance=ExtResource("1_tmx8u")]
 process_physics_priority = 1
 position = Vector2(1061, -824)
 scale = Vector2(5.2646, 5.2646)
 metadata/_edit_lock_ = true
-
-[node name="OxygenManager" parent="." instance=ExtResource("2_n8it6")]
 
 [node name="Player" parent="." instance=ExtResource("1_a3g5g")]
 
@@ -52,14 +54,35 @@ modulate = Color(1, 1, 1, 0.341176)
 position = Vector2(-113, -309)
 scale = Vector2(5.2646, 5.2646)
 
-[node name="Control" type="Control" parent="."]
+[node name="GameUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="OxygenBar" type="ProgressBar" parent="GameUI"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 19.0
+offset_right = 236.0
+offset_bottom = 46.0
+show_percentage = false
+
+[node name="SicknessBar" type="ProgressBar" parent="GameUI"]
+offset_left = 48.0
+offset_top = 74.0
+offset_right = 236.0
+offset_bottom = 101.0
+show_percentage = false
+
+[node name="OxygenUi" type="Sprite2D" parent="."]
+position = Vector2(-554, -296)
+scale = Vector2(0.621212, 0.621212)
+texture = ExtResource("8_wc5j5")
 
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]
 [connection signal="body_entered" from="Player/WaterDetection" to="Player/WaterDetection" method="_on_body_entered"]
 [connection signal="body_exited" from="Player/WaterDetection" to="Player/WaterDetection" method="_on_body_exited"]
-[connection signal="waterStateChanged" from="Player/WaterDetection" to="OxygenManager" method="_on_water_detection_water_state_changed"]
 [connection signal="child_entered_tree" from="Sprite2D" to="MazeWalls" method="_on_sprite_2d_child_entered_tree"]
