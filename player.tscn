@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cx1al2871st5b"]
+[gd_scene load_steps=9 format=3 uid="uid://cx1al2871st5b"]
 
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_wp8fq"]
 [ext_resource type="Texture2D" uid="uid://b0j3pjwr7hnfw" path="res://Assets/player.png" id="2_mbm3v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/sprite_controller.gd" id="3_fhvif"]
 [ext_resource type="Texture2D" uid="uid://5kim15eni4k7" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="3_pms1j"]
 [ext_resource type="Script" path="res://scripts/flashlight.gd" id="5_78f7j"]
+[ext_resource type="Script" path="res://scripts/glowstick_dropper.gd" id="7_yh56n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmlwu"]
 
@@ -35,5 +36,9 @@ script = ExtResource("5_78f7j")
 texture = ExtResource("3_pms1j")
 texture_scale = 0.52
 
+[node name="GlowstickDropper" type="Node2D" parent="CharacterBody2D"]
+script = ExtResource("7_yh56n")
+
 [connection signal="direction_changed" from="CharacterBody2D" to="CharacterBody2D/Sprite2D" method="_on_character_body_2d_direction_changed"]
 [connection signal="direction_changed" from="CharacterBody2D" to="CharacterBody2D/Flashlight" method="_on_character_body_2d_direction_changed"]
+[connection signal="direction_changed" from="CharacterBody2D" to="CharacterBody2D/GlowstickDropper" method="_on_character_body_2d_direction_changed"]

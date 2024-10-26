@@ -1,6 +1,5 @@
 [gd_scene load_steps=6 format=3 uid="uid://bnx27j048otog"]
 
-[ext_resource type="Script" path="res://scripts/drop_glowstick.gd" id="1_tmnnw"]
 [ext_resource type="Texture2D" uid="uid://bkan4ybqgutri" path="res://Assets/cave-background-xmrf3cnk7aa9t79a.jpg" id="2_2xvi7"]
 [ext_resource type="PackedScene" uid="uid://cx1al2871st5b" path="res://player.tscn" id="3_llxal"]
 [ext_resource type="Script" path="res://scripts/glowstick_manager.gd" id="4_ua50k"]
