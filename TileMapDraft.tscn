@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=4 uid="uid://c8oyaosa8kgxx"]
+
+[ext_resource type="TileSet" uid="uid://c8oyeo32801t6" path="res://Assets/cave_wall_tileset.tres" id="1_3srj2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wAAAAAEAAIAAAD/////AAAEAAAAAAAAAAAAAAAEAAIAAAABAAAAAAAEAAIAAAAAAP//AAADAAIAAAABAP//AAAEAAAAAAD///3/AAADAAAAAAAAAP3/AAAEAAIAAAD+//3/AAACAAIAAAD+/wAAAAACAAIAAAD+////AAACAAAAAAD7/wAAAAADAAEAAAD8/wEAAAADAAEAAAD9/wIAAAADAAEAAAD//wMAAAADAAEAAAA=")
+tile_set = ExtResource("1_3srj2")
