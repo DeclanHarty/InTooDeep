@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsiuke4a1y2ao"]
+[gd_scene load_steps=8 format=3 uid="uid://bsiuke4a1y2ao"]
 
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_khcek"]
 [ext_resource type="Texture2D" uid="uid://b0j3pjwr7hnfw" path="res://Assets/player.png" id="2_fgmjf"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://cxdu211o5xqpc" path="res://Assets/light-tex.png" id="3_df32m"]
 [ext_resource type="Texture2D" uid="uid://5kim15eni4k7" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="3_pms1j"]
 [ext_resource type="Script" path="res://scripts/flashlight.gd" id="5_ysap6"]
-[ext_resource type="Script" path="res://scenes/water_detection.gd" id="7_6f7tn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmlwu"]
 
@@ -37,16 +36,5 @@ script = ExtResource("5_ysap6")
 texture = ExtResource("3_pms1j")
 texture_scale = 0.52
 
-[node name="WaterDetection" type="Area2D" parent="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("7_6f7tn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/WaterDetection"]
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_pmlwu")
-
 [connection signal="direction_changed" from="CharacterBody2D" to="CharacterBody2D/Sprite2D" method="_on_character_body_2d_direction_changed"]
 [connection signal="direction_changed" from="CharacterBody2D" to="CharacterBody2D/Flashlight" method="_on_character_body_2d_direction_changed"]
-[connection signal="body_entered" from="CharacterBody2D/WaterDetection" to="CharacterBody2D/WaterDetection" method="_on_body_entered"]
-[connection signal="body_exited" from="CharacterBody2D/WaterDetection" to="CharacterBody2D/WaterDetection" method="_on_body_exited"]
