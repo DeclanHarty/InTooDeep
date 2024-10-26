@@ -12,8 +12,8 @@ const MAX_SINK_SPEED = 25;
 var rot_v
 
 func _ready():
-	var turn_direction = randf_range(-1, 1)
-	rot_v = randf_range(.1, 1) * (sign(turn_direction))
+	var clockwise = randi_range(0, 1)
+	rot_v = randf_range(.5, 1) * (clockwise if -1 else 1)
 	
 
 

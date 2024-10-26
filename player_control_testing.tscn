@@ -1,8 +1,36 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd04q1rc703w5"]
+[gd_scene load_steps=5 format=3 uid="uid://dd04q1rc703w5"]
 
-[ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://player.tscn" id="1_hod3k"]
+[ext_resource type="PackedScene" uid="uid://d28wvocurp7vo" path="res://glowstick.tscn" id="1_o70k0"]
+[ext_resource type="Texture2D" uid="uid://bkan4ybqgutri" path="res://Assets/cave-background-xmrf3cnk7aa9t79a.jpg" id="2_2xvi7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06lkw"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m0g45"]
 
 [node name="PlayerControlTesting" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_hod3k")]
-position = Vector2(-42, -39)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(17, 1)
+shape = SubResource("RectangleShape2D_06lkw")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D/CollisionShape2D"]
+scale = Vector2(20.059, 19.644)
+texture = SubResource("PlaceholderTexture2D_m0g45")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+texture = ExtResource("2_2xvi7")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Glowstick" parent="." instance=ExtResource("1_o70k0")]
+position = Vector2(0, -100)
