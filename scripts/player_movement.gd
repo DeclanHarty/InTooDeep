@@ -32,9 +32,7 @@ func update_velocity(input : Vector2, delta : float):
 		velocity.x = move_toward(velocity.x, 0, abs(norm_friction.x) * delta)
 	if(sign(input.y) != sign(velocity.y)):
 		velocity.y = move_toward(velocity.y, 0, abs(norm_friction.y) * delta)
-		
-	
-	
+
 func legacy_update_velocity(input : Vector2, delta : float):
 	if sign(input.x) != sign(velocity.x) and input.x:
 		velocity.x = move_toward(velocity.x, sign(input.x) * SPEED, ACCELERATION * delta)

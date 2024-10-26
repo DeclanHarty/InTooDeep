@@ -4,41 +4,41 @@ extends Node
 signal oxygen_changed(oxygen: int)
 
 @export var oxygen_max: int
+@export var permanent_oxygen_depletion_per_seconds: float
 @export var oxygen_depletion_per_seconds: float
-var _oxygen_tank: float
-var _is_depleting = false
-
-var is_in_water : bool = true
-
-func _on_water_detection_water_state_changed(in_water: bool) -> void:
-	print("signal received")
-	self.is_in_water = in_water
+var oxygen_tank: float
+var permanent_oxygen_tank: float
+var is_depleting = false
 
 # separate public methods to deplete and stop depleting
 func start_depleting():
-	_is_depleting = true
+	is_depleting = true
 
 func stop_depleting():
-	_is_depleting = false
+	is_depleting = false
 
 func get_oxygen() -> float:
-	return _oxygen_tank
+	return oxygen_tank
 
 func _ready():
-	_oxygen_tank = oxygen_max
+	oxygen_tank = oxygen_max
+	permanent_oxygen_tank = oxygen_max
 
 func _process(delta: float):
+	permanent_oxygen_tank -= permanent_oxygen_depletion_per_seconds * delta
+		
+	# the oxygen tank MUST fill or deplete
+	if is_depleting:
+		oxygen_tank -= oxygen_depletion_per_seconds * delta
+		oxygen_tank = clamp(oxygen_tank, 0, permanent_oxygen_tank)
+		oxygen_changed.emit(oxygen_tank)
+	# TODO: if the tank is to be neutral add a third branch in both spots
+	else:
+		oxygen_tank += oxygen_depletion_per_seconds * delta
+		oxygen_tank = clamp(oxygen_tank, 0, permanent_oxygen_tank)
+		oxygen_changed.emit(oxygen_tank)
 	
-	if (is_in_water == true):
-		_is_depleting = true
-		
-	elif (is_in_water != false):
-		_is_depleting = false
-
-	if (_is_depleting):
-		_oxygen_tank -= oxygen_depletion_per_seconds * delta
-		oxygen_changed.emit(_oxygen_tank)
-		
-	elif (!_is_depleting):
-		_oxygen_tank += oxygen_depletion_per_seconds * delta
-		oxygen_changed.emit(_oxygen_tank)
+	# game over logic and you DIE loser
+	if oxygen_tank <= 0:
+		# TODO: write game over logic or call method
+		pass
