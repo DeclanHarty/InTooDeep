@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=15 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
 [ext_resource type="Script" path="res://scripts/oxygen_manager.gd" id="1_pcyim"]
@@ -15,12 +15,29 @@ size = Vector2(199.727, 106.825)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3puc1"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kqvey"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlhfl"]
+bg_color = Color(0.470076, 0.470076, 0.470076, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rdwr"]
+
 [node name="GameScene" type="Node2D"]
 
 [node name="OxygenManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_pcyim")
 oxygen_max = 500
+permanent_oxygen_depletion_per_seconds = 1.0
 oxygen_depletion_per_seconds = 20.0
 
 [node name="WaterDetection" type="Area2D" parent="."]
@@ -90,24 +107,24 @@ offset_right = 576.0
 offset_bottom = 324.0
 script = ExtResource("8_mf8gn")
 
-[node name="OxygenBar" type="ProgressBar" parent="GameUI"]
-visible = false
-layout_mode = 0
-offset_left = 48.0
-offset_top = 19.0
-offset_right = 236.0
-offset_bottom = 46.0
-max_value = 500.0
-show_percentage = false
-
 [node name="MaxOxygenBar" type="ProgressBar" parent="GameUI"]
 offset_left = 48.0
 offset_top = 19.0
 offset_right = 236.0
 offset_bottom = 46.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_kqvey")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hlhfl")
 max_value = 500.0
-value = 10.39
+show_percentage = false
+
+[node name="OxygenBar" type="ProgressBar" parent="GameUI"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 19.0
+offset_right = 236.0
+offset_bottom = 46.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_0rdwr")
+max_value = 500.0
 show_percentage = false
 
 [node name="SicknessBar" type="ProgressBar" parent="GameUI"]
@@ -128,6 +145,7 @@ scale = Vector2(0.105, 0.105)
 texture = ExtResource("8_wc5j5")
 
 [connection signal="oxygen_changed" from="OxygenManager" to="GameUI" method="_on_oxygen_manager_oxygen_changed"]
+[connection signal="permanent_oxygen_changed" from="OxygenManager" to="GameUI" method="_on_oxygen_manager_permanent_oxygen_changed"]
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]
 [connection signal="body_entered" from="Player/Area2D" to="WaterDetection" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Player/Area2D" to="WaterDetection" method="_on_area_2d_body_exited"]
