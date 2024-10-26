@@ -13,7 +13,6 @@ scale = Vector2(5.2646, 5.2646)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_a3g5g")]
-position = Vector2(-3, 0)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
