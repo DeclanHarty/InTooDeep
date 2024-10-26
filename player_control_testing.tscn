@@ -11,7 +11,7 @@
 [node name="PlayerControlTesting" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("3_llxal")]
-position = Vector2(-14, -87)
+position = Vector2(-14, -88.57)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 modulate = Color(0, 0, 0, 1)
