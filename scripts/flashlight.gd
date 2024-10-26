@@ -13,8 +13,8 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	var added_rads = (PI if position.x < 0 else 0)
+func _process(_delta: float) -> void:
+	var added_rads = (PI if position.x < 0 else 0.0)
 	rotation = atan(position.y/position.x) + added_rads
 	#rotation = rotate_toward(rotation, atan(position.y/position.x) + added_rads, LIGHT_ROTATION_SPEED * delta)
 	
