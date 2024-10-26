@@ -7,18 +7,16 @@
 
 [node name="GameScene" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="MazeWalls" parent="." instance=ExtResource("1_tmx8u")]
-position = Vector2(1061, -824)
+position = Vector2(1061, -825)
 scale = Vector2(5.2646, 5.2646)
-metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_a3g5g")]
 position = Vector2(-3, 0)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

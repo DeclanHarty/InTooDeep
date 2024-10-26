@@ -1,9 +1,9 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c8oyeo32801t6"]
 
-[ext_resource type="Texture2D" uid="uid://b5lfk1urw1ifk" path="res://Assets/tileset.png" id="1_11wis"]
+[ext_resource type="Texture2D" uid="uid://b5lfk1urw1ifk" path="res://Assets/tileset.png" id="1_alii3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hitqr"]
-texture = ExtResource("1_11wis")
+texture = ExtResource("1_alii3")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0

@@ -1,24 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=6 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://player.tscn" id="1_a3g5g"]
 [ext_resource type="PackedScene" uid="uid://4rbdgp2kpva1" path="res://maze_walls.tscn" id="1_tmx8u"]
 [ext_resource type="Texture2D" uid="uid://bkan4ybqgutri" path="res://Assets/cave-background-xmrf3cnk7aa9t79a.jpg" id="2_njtht"]
 [ext_resource type="Texture2D" uid="uid://krxmiayby7xl" path="res://icon.svg" id="3_702yu"]
 
+[sub_resource type="GDScript" id="GDScript_r5ry5"]
+script/source = "extends Node2D
+
+bool collision_enabled = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [node name="GameScene" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="MazeWalls" parent="." instance=ExtResource("1_tmx8u")]
-position = Vector2(1061, -824)
+position = Vector2(1061, -825)
 scale = Vector2(5.2646, 5.2646)
-metadata/_edit_lock_ = true
+script = SubResource("GDScript_r5ry5")
 
 [node name="Player" parent="." instance=ExtResource("1_a3g5g")]
 position = Vector2(-3, 0)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

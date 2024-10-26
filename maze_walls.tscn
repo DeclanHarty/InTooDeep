@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://4rbdgp2kpva1"]
 
-[ext_resource type="TileSet" uid="uid://c8oyeo32801t6" path="res://cave_wall_tileset.tres" id="1_xnwiw"]
+[ext_resource type="TileSet" uid="uid://c8oyeo32801t6" path="res://Assets/cave_wall_tileset.tres" id="1_xnwiw"]
 [ext_resource type="Texture2D" uid="uid://cd2qrfdb1bwdj" path="res://Assets/pixil-frame-0(1).png" id="2_vypwd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vbusi"]
