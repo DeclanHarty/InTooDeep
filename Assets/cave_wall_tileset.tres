@@ -19,4 +19,5 @@ texture = ExtResource("1_alii3")
 4:2/0 = 0
 
 [resource]
+physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_hitqr")
