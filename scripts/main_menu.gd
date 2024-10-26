@@ -1,8 +1,9 @@
 extends Control
 
+@export var game: PackedScene
 
 func _on_play_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_packed(game)
 
 
 func _on_exit_pressed():

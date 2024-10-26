@@ -52,6 +52,12 @@ modulate = Color(1, 1, 1, 0.341176)
 position = Vector2(-113, -309)
 scale = Vector2(5.2646, 5.2646)
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]
 [connection signal="body_entered" from="Player/WaterDetection" to="Player/WaterDetection" method="_on_body_entered"]
 [connection signal="body_exited" from="Player/WaterDetection" to="Player/WaterDetection" method="_on_body_exited"]
