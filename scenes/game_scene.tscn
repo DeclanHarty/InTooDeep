@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=18 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="Script" path="res://scenes/game_scene_manager.gd" id="1_1kxip"]
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
-[ext_resource type="PackedScene" uid="uid://d28wvocurp7vo" path="res://scenes/glowstick.tscn" id="1_lrklx"]
 [ext_resource type="Script" path="res://scripts/oxygen_manager.gd" id="1_pcyim"]
 [ext_resource type="PackedScene" uid="uid://4rbdgp2kpva1" path="res://scenes/maze_walls.tscn" id="1_tmx8u"]
 [ext_resource type="Script" path="res://scripts/glowstick_manager.gd" id="2_64osl"]
@@ -41,8 +40,6 @@ size = Vector2(87, 137)
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_1kxip")
-
-[node name="Glowstick" parent="." instance=ExtResource("1_lrklx")]
 
 [node name="OxygenManager" type="Node" parent="."]
 unique_name_in_owner = true
