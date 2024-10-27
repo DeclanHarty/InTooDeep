@@ -1,5 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=19 format=3 uid="uid://bxdkdln1id0pk"]
 
+[ext_resource type="Script" path="res://scenes/game_scene_manager.gd" id="1_1kxip"]
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
 [ext_resource type="PackedScene" uid="uid://d28wvocurp7vo" path="res://scenes/glowstick.tscn" id="1_lrklx"]
 [ext_resource type="Script" path="res://scripts/oxygen_manager.gd" id="1_pcyim"]
@@ -39,6 +40,7 @@ corner_radius_bottom_left = 8
 size = Vector2(87, 137)
 
 [node name="GameScene" type="Node2D"]
+script = ExtResource("1_1kxip")
 
 [node name="Glowstick" parent="." instance=ExtResource("1_lrklx")]
 
@@ -177,6 +179,7 @@ script = ExtResource("10_bv13r")
 position = Vector2(-1.5, -10.5)
 shape = SubResource("RectangleShape2D_va75a")
 
+[connection signal="out_of_oxygen" from="OxygenManager" to="." method="_on_oxygen_manager_out_of_oxygen"]
 [connection signal="oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_changed"]
 [connection signal="permanent_oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_permanent_oxygen_changed"]
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]

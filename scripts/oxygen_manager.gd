@@ -3,13 +3,14 @@ extends Node
 
 signal oxygen_changed(oxygen: float)
 signal permanent_oxygen_changed(oxygen: float)
+signal out_of_oxygen
 
 @export var oxygen_max: int
 @export var permanent_oxygen_depletion_per_seconds: float
 @export var oxygen_depletion_per_seconds: float
 var oxygen_tank: float
 var permanent_oxygen_tank: float
-var is_depleting = false
+var is_depleting = true
 
 # separate public methods to deplete and stop depleting
 func start_depleting():
@@ -43,5 +44,4 @@ func _process(delta: float):
 	
 	# game over logic and you DIE loser
 	if oxygen_tank <= 0:
-		# TODO: write game over logic or call method
-		pass
+		out_of_oxygen.emit()
