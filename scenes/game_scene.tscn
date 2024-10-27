@@ -36,7 +36,7 @@ corner_radius_bottom_left = 8
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rdwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_va75a"]
-size = Vector2(87, 137)
+size = Vector2(252, 60)
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_1kxip")
@@ -70,7 +70,6 @@ visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 z_index = -1
 texture = ExtResource("2_njtht")
 
