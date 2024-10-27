@@ -1,38 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d28wvocurp7vo"]
+[gd_scene load_steps=8 format=3 uid="uid://d28wvocurp7vo"]
 
-[ext_resource type="Script" path="res://scenes/glowstick_signal_bridge.gd" id="1_ndlet"]
+[ext_resource type="Script" path="res://scenes/glowstick.gd" id="1_a2m7s"]
 [ext_resource type="Texture2D" uid="uid://c2aevouebhh8" path="res://Assets/glowstick.png" id="1_o6fbv"]
 [ext_resource type="Texture2D" uid="uid://5kim15eni4k7" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_xuiu7"]
 [ext_resource type="Script" path="res://scenes/point_light_2d.gd" id="3_ikpws"]
 [ext_resource type="Script" path="res://glowstick_interact.gd" id="3_rdyrx"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cqa23"]
-blend_mode = 1
-
-[sub_resource type="GDScript" id="GDScript_3etbr"]
-script/source = "extends CharacterBody2D
-
-
-const SINKING_ACCELERATION = 25;
-const MAX_SINK_SPEED = 25;
-var rot_v
-
-func _ready():
-	var turn_direction = randf_range(-1, 1)
-	rot_v = randf_range(.1, 1) * (sign(turn_direction))
-	
-
-
-func _physics_process(delta: float) -> void:
-	if(!is_on_floor()):
-		velocity.y = move_toward(velocity.y, MAX_SINK_SPEED, SINKING_ACCELERATION * delta)
-		rotation += rot_v * delta
-	else:
-		rot_v = 0;
-		velocity = Vector2(0,0)
-
-	move_and_slide()
-"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q27we"]
 radius = 2.0
@@ -41,38 +13,34 @@ height = 16.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_boru3"]
 radius = 34.0147
 
-[node name="Glowstick" type="Node2D"]
+[node name="Glowstick" type="CharacterBody2D"]
 z_index = 2
-script = ExtResource("1_ndlet")
+collision_layer = 10
+collision_mask = 10
+script = ExtResource("1_a2m7s")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-material = SubResource("CanvasItemMaterial_cqa23")
-collision_layer = 2
-collision_mask = 2
-script = SubResource("GDScript_3etbr")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_q27we")
 
-[node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D"]
+[node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.492, 0.82, 0.492, 0.580392)
 energy = 4.05
 texture = ExtResource("2_xuiu7")
 texture_scale = 0.5
 script = ExtResource("3_ikpws")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_o6fbv")
 
-[node name="InteractionRange" type="Area2D" parent="CharacterBody2D"]
+[node name="InteractionRange" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("3_rdyrx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionRange"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRange"]
 shape = SubResource("CircleShape2D_boru3")
 
-[connection signal="area_entered" from="CharacterBody2D/InteractionRange" to="CharacterBody2D/InteractionRange" method="_on_area_entered"]
-[connection signal="area_exited" from="CharacterBody2D/InteractionRange" to="CharacterBody2D/InteractionRange" method="_on_area_exited"]
-[connection signal="retrive_glowstick" from="CharacterBody2D/InteractionRange" to="." method="_on_interaction_range_retrive_glowstick"]
+[connection signal="area_entered" from="InteractionRange" to="." method="_on_interaction_range_area_entered"]
+[connection signal="area_exited" from="InteractionRange" to="InteractionRange" method="_on_area_exited"]
+[connection signal="retrive_glowstick" from="InteractionRange" to="." method="_on_interaction_range_retrive_glowstick"]
