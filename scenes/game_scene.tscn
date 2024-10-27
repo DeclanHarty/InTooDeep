@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://bxdkdln1id0pk"]
 
-[ext_resource type="Script" path="res://scenes/game_scene_manager.gd" id="1_1kxip"]
+[ext_resource type="Script" path="res://scripts/game_scene_manager.gd" id="1_1kxip"]
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
 [ext_resource type="Script" path="res://scripts/oxygen_manager.gd" id="1_pcyim"]
 [ext_resource type="PackedScene" uid="uid://4rbdgp2kpva1" path="res://scenes/maze_walls.tscn" id="1_tmx8u"]
@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="8_mf8gn"]
 [ext_resource type="Texture2D" uid="uid://brdq5y8hwcggt" path="res://Assets/oxygen_ui.png" id="8_wc5j5"]
 [ext_resource type="Texture2D" uid="uid://c2aevouebhh8" path="res://Assets/glowstick.png" id="9_them3"]
-[ext_resource type="Script" path="res://scenes/water2.gd" id="10_bv13r"]
+[ext_resource type="Script" path="res://scripts/water2.gd" id="10_1qgxl"]
 
 [sub_resource type="Gradient" id="Gradient_upfl6"]
 offsets = PackedFloat32Array(0.439759)
@@ -38,10 +38,10 @@ corner_radius_bottom_left = 8
 size = Vector2(252, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_edl6w"]
-size = Vector2(31.5726, 37)
+size = Vector2(60.4839, 149)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vm4tl"]
-size = Vector2(351.408, 42.7872)
+size = Vector2(373.564, 49.4281)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74pl4"]
 size = Vector2(127.179, 65)
@@ -157,17 +157,17 @@ script = ExtResource("2_64osl")
 position = Vector2(133, -324)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket"]
 position = Vector2(1.5, -10.5)
 shape = SubResource("RectangleShape2D_va75a")
 
 [node name="Airpocket2" type="Area2D" parent="."]
-position = Vector2(431, -1085)
+position = Vector2(437, -1034)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket2"]
 position = Vector2(-1.5, -10.5)
@@ -177,9 +177,29 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(2111, -2474)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket3"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket21" type="Area2D" parent="."]
+position = Vector2(3094, -3719)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_1qgxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket21"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket22" type="Area2D" parent="."]
+position = Vector2(5407, -1280)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_1qgxl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket22"]
 position = Vector2(-1.5, -10.5)
 shape = SubResource("RectangleShape2D_va75a")
 
@@ -187,7 +207,7 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(2584, -356)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket6"]
 position = Vector2(-1.5, -10.5)
@@ -197,19 +217,9 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(336, -2132)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket20"]
-position = Vector2(-1.5, -10.5)
-shape = SubResource("RectangleShape2D_va75a")
-
-[node name="Airpocket7" type="Area2D" parent="."]
-position = Vector2(2662, 741)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("10_bv13r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket7"]
 position = Vector2(-1.5, -10.5)
 shape = SubResource("RectangleShape2D_va75a")
 
@@ -217,7 +227,7 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(-332, 477)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket8"]
 position = Vector2(-1.5, -10.5)
@@ -227,7 +237,7 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(-1246, -1034)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket9"]
 position = Vector2(-1.5, -10.5)
@@ -237,7 +247,7 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(-2373, -1380)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket10"]
 position = Vector2(-1.5, -10.5)
@@ -247,7 +257,7 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(-3779, -2555)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket11"]
 position = Vector2(-1.5, -10.5)
@@ -257,7 +267,7 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(-1763, -3911)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket12"]
 position = Vector2(-1.5, -10.5)
@@ -267,7 +277,7 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(-2182, -3314)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket13"]
 position = Vector2(-1.5, -10.5)
@@ -277,7 +287,7 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(-1928, -3314)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket14"]
 position = Vector2(-1.5, -10.5)
@@ -287,7 +297,7 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(-1674, -3311)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket15"]
 position = Vector2(-1.5, -10.5)
@@ -297,7 +307,7 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(-1423, -3308)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket16"]
 position = Vector2(-1.5, -10.5)
@@ -307,7 +317,7 @@ shape = SubResource("RectangleShape2D_va75a")
 position = Vector2(4757, -448)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket5"]
 position = Vector2(-86.1001, 8.5)
@@ -315,13 +325,13 @@ scale = Vector2(14.88, 1)
 shape = SubResource("RectangleShape2D_edl6w")
 
 [node name="Airpocket17" type="Area2D" parent="."]
-position = Vector2(8067, -2308)
+position = Vector2(8138, -2810)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket17"]
-position = Vector2(-86.1001, 8.5)
+position = Vector2(129, -47.5)
 scale = Vector2(14.88, 1)
 shape = SubResource("RectangleShape2D_edl6w")
 
@@ -329,19 +339,19 @@ shape = SubResource("RectangleShape2D_edl6w")
 position = Vector2(818, -5321)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket18"]
-position = Vector2(170, 27.4526)
+position = Vector2(166, 35.4536)
 rotation = -3.14159
 scale = Vector2(4.51328, -2.40949)
 shape = SubResource("RectangleShape2D_vm4tl")
 
 [node name="Airpocket19" type="Area2D" parent="."]
-position = Vector2(6557, -4037)
+position = Vector2(6581, -4181)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket19"]
 position = Vector2(170, 27.4526)
@@ -353,10 +363,10 @@ shape = SubResource("RectangleShape2D_vm4tl")
 position = Vector2(2315, -3072)
 collision_layer = 0
 collision_mask = 4
-script = ExtResource("10_bv13r")
+script = ExtResource("10_1qgxl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket4"]
-position = Vector2(383.7, 8.5)
+position = Vector2(2092, -501)
 scale = Vector2(7.16, 1)
 shape = SubResource("RectangleShape2D_74pl4")
 

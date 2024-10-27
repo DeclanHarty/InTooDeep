@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddy7pjqdhqfub"]
+[gd_scene load_steps=7 format=3 uid="uid://ddy7pjqdhqfub"]
 
-[ext_resource type="Script" path="res://scenes/game_over_screen.gd" id="1_e8f3s"]
+[ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_e8f3s"]
 [ext_resource type="PackedScene" uid="uid://bxdkdln1id0pk" path="res://scenes/game_scene.tscn" id="2_axfv1"]
 [ext_resource type="PackedScene" uid="uid://cawu11wck61he" path="res://scenes/main_menu.tscn" id="3_p3g40"]
+[ext_resource type="Texture2D" uid="uid://pfb25as7anhn" path="res://Assets/Game_Over.png" id="4_7bicl"]
+
+[sub_resource type="Gradient" id="Gradient_1yi12"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.642857)
+colors = PackedColorArray(0, 0.203922, 0.309804, 1, 0.0235294, 0.0156863, 0.145098, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_elohk"]
+gradient = SubResource("Gradient_1yi12")
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -15,15 +24,18 @@ script = ExtResource("1_e8f3s")
 game = ExtResource("2_axfv1")
 menu = ExtResource("3_p3g40")
 
-[node name="Retry" type="Button" parent="."]
-layout_mode = 0
-offset_left = 288.0
-offset_top = 420.0
-offset_right = 495.0
-offset_bottom = 520.0
-text = "RETRY"
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(572.215, 349.25)
+rotation = 1.5708
+scale = Vector2(5.34766, 1265.22)
+texture = SubResource("GradientTexture1D_elohk")
 
-[node name="ReturnToMenu" type="Button" parent="."]
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ReturnToMenu" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = 657.0
 offset_top = 420.0
@@ -31,5 +43,32 @@ offset_right = 864.0
 offset_bottom = 520.0
 text = "RETURN TO MENU"
 
-[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
-[connection signal="pressed" from="ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
+[node name="Retry" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 420.0
+offset_right = 495.0
+offset_bottom = 520.0
+text = "RETRY"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -485.0
+offset_top = -1.0
+offset_right = -279.0
+offset_bottom = 49.0
+grow_horizontal = 2
+scale = Vector2(4.62, 4.62)
+theme_override_font_sizes/font_size = 36
+text = "GAME OVER"
+
+[node name="GameOverSprite" type="Sprite2D" parent="."]
+position = Vector2(583, 307)
+scale = Vector2(2.65, 2.65)
+texture = ExtResource("4_7bicl")
+
+[connection signal="pressed" from="Control/ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
+[connection signal="pressed" from="Control/Retry" to="." method="_on_retry_pressed"]
