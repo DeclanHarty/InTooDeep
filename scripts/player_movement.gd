@@ -7,6 +7,8 @@ const FRICTION = 200.0
 
 var current_speed
 
+var out_of_water : bool = false
+
 signal direction_changed(velocity)
 
 func _physics_process(delta: float) -> void:
@@ -20,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func update_velocity(input : Vector2, delta : float):
+	print(out_of_water)
 	var norm_input : Vector2 = input.normalized()
 	
 	var norm_acceleration := ACCELERATION * norm_input
@@ -32,6 +35,11 @@ func update_velocity(input : Vector2, delta : float):
 		velocity.x = move_toward(velocity.x, 0, abs(norm_friction.x) * delta)
 	if(sign(input.y) != sign(velocity.y)):
 		velocity.y = move_toward(velocity.y, 0, abs(norm_friction.y) * delta)
+		
+			
+	if(out_of_water):
+		print(velocity.y)
+		velocity.y = max(velocity.y, 0)
 
 func legacy_update_velocity(input : Vector2, delta : float):
 	if sign(input.x) != sign(velocity.x) and input.x:
@@ -51,4 +59,11 @@ func legacy_update_velocity(input : Vector2, delta : float):
 		velocity.y = move_toward(velocity.y, sign(input.y) * SPEED, ACCELERATION * delta)
 	else: 
 		velocity.y = move_toward(velocity.y, 0, FRICTION * delta)
+		
+func exit_water():
+	print("Exited Water")
+	out_of_water = true
+	
+func enter_water():
+	out_of_water = false
 	

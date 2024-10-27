@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=17 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
 [ext_resource type="PackedScene" uid="uid://d28wvocurp7vo" path="res://scenes/glowstick.tscn" id="1_lrklx"]
@@ -7,12 +7,9 @@
 [ext_resource type="Script" path="res://scripts/glowstick_manager.gd" id="2_64osl"]
 [ext_resource type="Texture2D" uid="uid://bkan4ybqgutri" path="res://Assets/cave-background-xmrf3cnk7aa9t79a.jpg" id="2_njtht"]
 [ext_resource type="Texture2D" uid="uid://krxmiayby7xl" path="res://icon.svg" id="3_702yu"]
-[ext_resource type="Script" path="res://scripts/water_detection.gd" id="4_6p7kl"]
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="8_mf8gn"]
 [ext_resource type="Texture2D" uid="uid://brdq5y8hwcggt" path="res://Assets/oxygen_ui.png" id="8_wc5j5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sltc4"]
-size = Vector2(199.727, 106.825)
+[ext_resource type="Script" path="res://scenes/water2.gd" id="10_bv13r"]
 
 [sub_resource type="Gradient" id="Gradient_upfl6"]
 offsets = PackedFloat32Array(0.439759)
@@ -37,6 +34,9 @@ corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rdwr"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_va75a"]
+size = Vector2(87, 137)
+
 [node name="GameScene" type="Node2D"]
 
 [node name="Glowstick" parent="." instance=ExtResource("1_lrklx")]
@@ -48,27 +48,6 @@ oxygen_max = 500
 permanent_oxygen_depletion_per_seconds = 1.0
 oxygen_depletion_per_seconds = 20.0
 
-[node name="WaterDetection" type="Area2D" parent="."]
-position = Vector2(146, -278)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("4_6p7kl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterDetection"]
-position = Vector2(-8.94614, 2.74365)
-rotation = -1.57157
-scale = Vector2(1.34444, 1.51737)
-shape = SubResource("RectangleShape2D_sltc4")
-
-[node name="WaterDetection2" type="Area2D" parent="."]
-position = Vector2(435, -1241)
-script = ExtResource("4_6p7kl")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="WaterDetection2"]
-position = Vector2(-1.06665, -1.48218)
-rotation = -1.57157
-shape = SubResource("RectangleShape2D_sltc4")
-
 [node name="MazeWalls" parent="." instance=ExtResource("1_tmx8u")]
 process_physics_priority = 1
 position = Vector2(1061, -824)
@@ -77,6 +56,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_a3g5g")]
 unique_name_in_owner = true
+collision_layer = 5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -86,6 +66,7 @@ scale = Vector2(4.567, 700)
 texture = SubResource("GradientTexture1D_672j4")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -149,6 +130,26 @@ texture = ExtResource("8_wc5j5")
 
 [node name="GlowstickManager" type="Node2D" parent="."]
 script = ExtResource("2_64osl")
+
+[node name="Airpocket" type="Area2D" parent="."]
+position = Vector2(133, -324)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket"]
+position = Vector2(1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket2" type="Area2D" parent="."]
+position = Vector2(431, -1085)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket2"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
 
 [connection signal="oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_changed"]
 [connection signal="permanent_oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_permanent_oxygen_changed"]
