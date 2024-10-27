@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=18 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
 [ext_resource type="PackedScene" uid="uid://d28wvocurp7vo" path="res://scenes/glowstick.tscn" id="1_lrklx"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://krxmiayby7xl" path="res://icon.svg" id="3_702yu"]
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="8_mf8gn"]
 [ext_resource type="Texture2D" uid="uid://brdq5y8hwcggt" path="res://Assets/oxygen_ui.png" id="8_wc5j5"]
+[ext_resource type="Texture2D" uid="uid://c2aevouebhh8" path="res://Assets/glowstick.png" id="9_them3"]
 [ext_resource type="Script" path="res://scenes/water2.gd" id="10_bv13r"]
 
 [sub_resource type="Gradient" id="Gradient_upfl6"]
@@ -128,6 +129,31 @@ offset_bottom = 493.0
 scale = Vector2(0.105, 0.105)
 texture = ExtResource("8_wc5j5")
 
+[node name="GlowstickTexture" type="TextureRect" parent="CanvasLayer/GameUI"]
+layout_mode = 0
+offset_left = 1015.0
+offset_top = 2.0
+offset_right = 1055.0
+offset_bottom = 42.0
+texture = ExtResource("9_them3")
+
+[node name="X" type="RichTextLabel" parent="CanvasLayer/GameUI"]
+layout_mode = 0
+offset_left = 1051.0
+offset_top = 9.0
+offset_right = 1091.0
+offset_bottom = 49.0
+text = "X "
+
+[node name="GlowstickCount" type="RichTextLabel" parent="CanvasLayer/GameUI"]
+layout_mode = 0
+offset_left = 1067.0
+offset_top = 9.0
+offset_right = 1107.0
+offset_bottom = 49.0
+text = "10"
+tab_size = 5
+
 [node name="GlowstickManager" type="Node2D" parent="."]
 script = ExtResource("2_64osl")
 
@@ -155,3 +181,4 @@ shape = SubResource("RectangleShape2D_va75a")
 [connection signal="permanent_oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_permanent_oxygen_changed"]
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]
 [connection signal="child_entered_tree" from="Sprite2D" to="MazeWalls" method="_on_sprite_2d_child_entered_tree"]
+[connection signal="glowstick_num_change" from="GlowstickManager" to="CanvasLayer/GameUI" method="_on_glowstick_manager_glowstick_num_change"]
