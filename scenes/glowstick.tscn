@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://d28wvocurp7vo"]
 
-[ext_resource type="Script" path="res://scenes/glowstick.gd" id="1_a2m7s"]
+[ext_resource type="Script" path="res://scripts/glowstick.gd" id="1_a2m7s"]
 [ext_resource type="Texture2D" uid="uid://c2aevouebhh8" path="res://Assets/glowstick.png" id="1_o6fbv"]
 [ext_resource type="Texture2D" uid="uid://5kim15eni4k7" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_xuiu7"]
-[ext_resource type="Script" path="res://scenes/point_light_2d.gd" id="3_ikpws"]
+[ext_resource type="Script" path="res://scripts/point_light_2d.gd" id="3_ikpws"]
 [ext_resource type="Script" path="res://scripts/glowstick_interact.gd" id="3_rdyrx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q27we"]
