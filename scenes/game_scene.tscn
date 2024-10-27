@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=17 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="Script" path="res://scenes/game_scene_manager.gd" id="1_1kxip"]
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
 [ext_resource type="Script" path="res://scripts/oxygen_manager.gd" id="1_pcyim"]
 [ext_resource type="PackedScene" uid="uid://4rbdgp2kpva1" path="res://scenes/maze_walls.tscn" id="1_tmx8u"]
 [ext_resource type="Script" path="res://scripts/glowstick_manager.gd" id="2_64osl"]
-[ext_resource type="Texture2D" uid="uid://bkan4ybqgutri" path="res://Assets/cave-background-xmrf3cnk7aa9t79a.jpg" id="2_njtht"]
 [ext_resource type="Texture2D" uid="uid://krxmiayby7xl" path="res://icon.svg" id="3_702yu"]
 [ext_resource type="Script" path="res://scripts/game_ui.gd" id="8_mf8gn"]
 [ext_resource type="Texture2D" uid="uid://brdq5y8hwcggt" path="res://Assets/oxygen_ui.png" id="8_wc5j5"]
@@ -44,9 +43,10 @@ script = ExtResource("1_1kxip")
 [node name="OxygenManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_pcyim")
-oxygen_max = 500
-permanent_oxygen_depletion_per_seconds = 1.0
+oxygen_max = 1000
+permanent_oxygen_depletion_per_seconds = 2.0
 oxygen_depletion_per_seconds = 20.0
+oxygen_refill_per_seconds = 50.0
 
 [node name="MazeWalls" parent="." instance=ExtResource("1_tmx8u")]
 process_physics_priority = 1
@@ -66,12 +66,7 @@ scale = Vector2(4.567, 700)
 texture = SubResource("GradientTexture1D_672j4")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-texture = ExtResource("2_njtht")
 
 [node name="Icon" type="Sprite2D" parent="."]
 visible = false
@@ -108,14 +103,6 @@ offset_right = 236.0
 offset_bottom = 46.0
 theme_override_styles/background = SubResource("StyleBoxEmpty_0rdwr")
 max_value = 500.0
-show_percentage = false
-
-[node name="SicknessBar" type="ProgressBar" parent="CanvasLayer/GameUI"]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 74.0
-offset_right = 236.0
-offset_bottom = 101.0
 show_percentage = false
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameUI"]
@@ -177,7 +164,7 @@ shape = SubResource("RectangleShape2D_va75a")
 
 [connection signal="out_of_oxygen" from="OxygenManager" to="." method="_on_oxygen_manager_out_of_oxygen"]
 [connection signal="oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_changed"]
+[connection signal="oxygen_state_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_state_changed"]
 [connection signal="permanent_oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_permanent_oxygen_changed"]
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]
-[connection signal="child_entered_tree" from="Sprite2D" to="MazeWalls" method="_on_sprite_2d_child_entered_tree"]
 [connection signal="glowstick_num_change" from="GlowstickManager" to="CanvasLayer/GameUI" method="_on_glowstick_manager_glowstick_num_change"]

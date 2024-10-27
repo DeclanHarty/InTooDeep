@@ -59,7 +59,6 @@ func legacy_update_velocity(input : Vector2, delta : float):
 		velocity.y = move_toward(velocity.y, 0, FRICTION * delta)
 		
 func exit_water():
-	print("Exited Water")
 	out_of_water = true
 	
 func enter_water():
