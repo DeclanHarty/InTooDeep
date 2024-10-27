@@ -10,8 +10,8 @@ signal oxygen_state_changed(state: String)
 @export var permanent_oxygen_depletion_per_seconds: float
 @export var oxygen_depletion_per_seconds: float
 @export var oxygen_refill_per_seconds: float
-const LOW_OXYGEN = 100
-const LOW_PERM_OXYGEN = 100
+const LOW_OXYGEN = 250
+const LOW_PERM_OXYGEN = 250
 var oxygen_tank: float
 var permanent_oxygen_tank: float
 var is_depleting = true

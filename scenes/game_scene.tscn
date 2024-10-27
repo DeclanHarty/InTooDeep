@@ -167,4 +167,5 @@ shape = SubResource("RectangleShape2D_va75a")
 [connection signal="oxygen_state_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_state_changed"]
 [connection signal="permanent_oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_permanent_oxygen_changed"]
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]
+[connection signal="water_state_changed" from="Player" to="CanvasLayer/GameUI" method="_on_player_water_state_changed"]
 [connection signal="glowstick_num_change" from="GlowstickManager" to="CanvasLayer/GameUI" method="_on_glowstick_manager_glowstick_num_change"]
