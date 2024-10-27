@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=18 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="Script" path="res://scenes/game_scene_manager.gd" id="1_1kxip"]
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
-[ext_resource type="PackedScene" uid="uid://d28wvocurp7vo" path="res://scenes/glowstick.tscn" id="1_lrklx"]
 [ext_resource type="Script" path="res://scripts/oxygen_manager.gd" id="1_pcyim"]
 [ext_resource type="PackedScene" uid="uid://4rbdgp2kpva1" path="res://scenes/maze_walls.tscn" id="1_tmx8u"]
 [ext_resource type="Script" path="res://scripts/glowstick_manager.gd" id="2_64osl"]
@@ -37,12 +36,10 @@ corner_radius_bottom_left = 8
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rdwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_va75a"]
-size = Vector2(87, 137)
+size = Vector2(252, 60)
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_1kxip")
-
-[node name="Glowstick" parent="." instance=ExtResource("1_lrklx")]
 
 [node name="OxygenManager" type="Node" parent="."]
 unique_name_in_owner = true
@@ -73,7 +70,6 @@ visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 z_index = -1
 texture = ExtResource("2_njtht")
 
