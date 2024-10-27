@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=23 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="Script" path="res://scenes/game_scene_manager.gd" id="1_1kxip"]
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://brdq5y8hwcggt" path="res://Assets/oxygen_ui.png" id="8_wc5j5"]
 [ext_resource type="Texture2D" uid="uid://c2aevouebhh8" path="res://Assets/glowstick.png" id="9_them3"]
 [ext_resource type="Script" path="res://scenes/water2.gd" id="10_bv13r"]
+[ext_resource type="Texture2D" uid="uid://5kim15eni4k7" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="11_ph6fo"]
+[ext_resource type="Script" path="res://scenes/win_collider.gd" id="12_mi18a"]
 
 [sub_resource type="Gradient" id="Gradient_upfl6"]
 offsets = PackedFloat32Array(0.439759)
@@ -46,6 +48,9 @@ size = Vector2(373.564, 49.4281)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74pl4"]
 size = Vector2(127.179, 65)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8a7er"]
+size = Vector2(1831, 78)
+
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_1kxip")
 
@@ -75,7 +80,6 @@ scale = Vector2(4.567, 700)
 texture = SubResource("GradientTexture1D_672j4")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -346,18 +350,6 @@ rotation = -3.14159
 scale = Vector2(4.51328, -2.40949)
 shape = SubResource("RectangleShape2D_vm4tl")
 
-[node name="Airpocket19" type="Area2D" parent="."]
-position = Vector2(6581, -4181)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("10_bv13r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket19"]
-position = Vector2(170, 27.4526)
-rotation = -3.14159
-scale = Vector2(4.51328, -2.40949)
-shape = SubResource("RectangleShape2D_vm4tl")
-
 [node name="Airpocket4" type="Area2D" parent="."]
 position = Vector2(2315, -3072)
 collision_layer = 0
@@ -369,6 +361,22 @@ position = Vector2(2092, -501)
 scale = Vector2(7.16, 1)
 shape = SubResource("RectangleShape2D_74pl4")
 
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(6898, -4909)
+energy = 3.9
+texture = ExtResource("11_ph6fo")
+texture_scale = 10.05
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(6859, -4271)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("12_mi18a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(20.5, 29)
+shape = SubResource("RectangleShape2D_8a7er")
+
 [connection signal="out_of_oxygen" from="OxygenManager" to="." method="_on_oxygen_manager_out_of_oxygen"]
 [connection signal="oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_changed"]
 [connection signal="oxygen_state_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_state_changed"]
@@ -376,3 +384,4 @@ shape = SubResource("RectangleShape2D_74pl4")
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]
 [connection signal="water_state_changed" from="Player" to="CanvasLayer/GameUI" method="_on_player_water_state_changed"]
 [connection signal="glowstick_num_change" from="GlowstickManager" to="CanvasLayer/GameUI" method="_on_glowstick_manager_glowstick_num_change"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
