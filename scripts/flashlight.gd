@@ -14,17 +14,24 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	var added_rads = (PI if position.x < 0 else 0.0)
-	rotation = atan(position.y/position.x) + added_rads
+	var mouse_position = get_viewport().get_mouse_position()
+	var screen_size = get_viewport().size
+	var screen_center = Vector2(screen_size.x / 2, screen_size.y/2)
+	var difference = mouse_position - screen_center
+	var added_rads = (PI if difference.x < 0 else 0.0)
+	rotation = atan(difference.y/difference.x) + added_rads
+	print(rotation)
+	position = Vector2(LIGHT_DISTANCE_FROM_PLAYER * cos(rotation), LIGHT_DISTANCE_FROM_PLAYER * sin(rotation))
+	print(position)
 	#rotation = rotate_toward(rotation, atan(position.y/position.x) + added_rads, LIGHT_ROTATION_SPEED * delta)
 	
 
 
-func _on_character_body_2d_direction_changed(velocity: Vector2) -> void:
-	#if(sign(velocity.x) != 0 and sign(velocity.x) != current_direction):
-		#position.x = -position.x
-		#scale.x = -scale.x
-		#current_direction = sign(velocity.x)
-		
-	if(velocity):
-		position = velocity.normalized() * LIGHT_DISTANCE_FROM_PLAYER
+#func _on_character_body_2d_direction_changed(velocity: Vector2) -> void:
+	##if(sign(velocity.x) != 0 and sign(velocity.x) != current_direction):
+		##position.x = -position.x
+		##scale.x = -scale.x
+		##current_direction = sign(velocity.x)
+		#
+	#if(velocity):
+		#position = velocity.normalized() * LIGHT_DISTANCE_FROM_PLAYER
