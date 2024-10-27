@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=16 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
+[ext_resource type="PackedScene" uid="uid://d28wvocurp7vo" path="res://scenes/glowstick.tscn" id="1_lrklx"]
 [ext_resource type="Script" path="res://scripts/oxygen_manager.gd" id="1_pcyim"]
 [ext_resource type="PackedScene" uid="uid://4rbdgp2kpva1" path="res://scenes/maze_walls.tscn" id="1_tmx8u"]
 [ext_resource type="Texture2D" uid="uid://bkan4ybqgutri" path="res://Assets/cave-background-xmrf3cnk7aa9t79a.jpg" id="2_njtht"]
@@ -36,6 +37,8 @@ corner_radius_bottom_left = 8
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rdwr"]
 
 [node name="GameScene" type="Node2D"]
+
+[node name="Glowstick" parent="." instance=ExtResource("1_lrklx")]
 
 [node name="OxygenManager" type="Node" parent="."]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsiuke4a1y2ao"]
+[gd_scene load_steps=9 format=3 uid="uid://bsiuke4a1y2ao"]
 
 [ext_resource type="Script" path="res://scripts/player_movement.gd" id="1_khcek"]
 [ext_resource type="Texture2D" uid="uid://b0j3pjwr7hnfw" path="res://Assets/player.png" id="2_fgmjf"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://scripts/flashlight.gd" id="5_ysap6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pmlwu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x20g6"]
+radius = 59.5399
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_mask = 6
@@ -24,7 +27,6 @@ script = ExtResource("3_23rrk")
 
 [node name="Flashlight" type="PointLight2D" parent="."]
 position = Vector2(50, 0)
-blend_mode = 2
 shadow_enabled = true
 shadow_item_cull_mask = 2
 texture = ExtResource("4_hn5pw")
@@ -35,6 +37,13 @@ script = ExtResource("5_ysap6")
 color = Color(1, 1, 1, 0.572549)
 energy = 2.37
 texture = ExtResource("3_pms1j")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_x20g6")
 
 [connection signal="direction_changed" from="." to="Sprite2D" method="_on_character_body_2d_direction_changed"]
 [connection signal="direction_changed" from="." to="Flashlight" method="_on_character_body_2d_direction_changed"]

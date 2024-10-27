@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d28wvocurp7vo"]
+[gd_scene load_steps=10 format=3 uid="uid://d28wvocurp7vo"]
 
+[ext_resource type="Script" path="res://scenes/glowstick_signal_bridge.gd" id="1_ndlet"]
 [ext_resource type="Texture2D" uid="uid://c2aevouebhh8" path="res://Assets/glowstick.png" id="1_o6fbv"]
 [ext_resource type="Texture2D" uid="uid://5kim15eni4k7" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_xuiu7"]
+[ext_resource type="Script" path="res://scenes/point_light_2d.gd" id="3_ikpws"]
+[ext_resource type="Script" path="res://glowstick_interact.gd" id="3_rdyrx"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cqa23"]
 blend_mode = 1
@@ -35,11 +38,16 @@ func _physics_process(delta: float) -> void:
 radius = 2.0
 height = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_boru3"]
+radius = 34.0147
+
 [node name="Glowstick" type="Node2D"]
 z_index = 2
+script = ExtResource("1_ndlet")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 material = SubResource("CanvasItemMaterial_cqa23")
+collision_mask = 2
 script = SubResource("GDScript_3etbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -50,7 +58,20 @@ color = Color(0.492, 0.82, 0.492, 0.580392)
 energy = 4.05
 texture = ExtResource("2_xuiu7")
 texture_scale = 0.5
+script = ExtResource("3_ikpws")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 texture_filter = 1
 texture = ExtResource("1_o6fbv")
+
+[node name="InteractionRange" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("3_rdyrx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/InteractionRange"]
+shape = SubResource("CircleShape2D_boru3")
+
+[connection signal="area_entered" from="CharacterBody2D/InteractionRange" to="CharacterBody2D/InteractionRange" method="_on_area_entered"]
+[connection signal="area_exited" from="CharacterBody2D/InteractionRange" to="CharacterBody2D/InteractionRange" method="_on_area_exited"]
+[connection signal="retrive_glowstick" from="CharacterBody2D/InteractionRange" to="." method="_on_interaction_range_retrive_glowstick"]

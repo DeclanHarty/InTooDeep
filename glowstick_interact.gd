@@ -1,5 +1,18 @@
 extends Area2D
 
-func _on_body_entered(body: Node2D) -> void:
-	print("Entered")
-	pass # Replace with function body.
+signal retrive_glowstick
+
+var player_is_in
+
+func _process(delta: float) -> void:
+	if(Input.is_action_pressed("retrieve_glowstick") and player_is_in):
+		retrive_glowstick.emit()
+
+func _on_area_entered(area: Area2D) -> void:
+	print("entered")
+	player_is_in = true
+	
+func _on_area_exited(area: Area2D) -> void:
+	print("exited")
+	player_is_in = false
+		
