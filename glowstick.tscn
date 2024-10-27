@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c2aevouebhh8" path="res://Assets/glowstick.png" id="1_o6fbv"]
 [ext_resource type="Texture2D" uid="uid://5kim15eni4k7" path="res://Assets/2d_lights_and_shadows_neutral_point_light.webp" id="2_xuiu7"]
-[ext_resource type="Script" path="res://glowstick_interact.gd" id="3_sf0da"]
+[ext_resource type="Script" path="res://scripts/glowstick_interact.gd" id="3_sf0da"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cqa23"]
 blend_mode = 1

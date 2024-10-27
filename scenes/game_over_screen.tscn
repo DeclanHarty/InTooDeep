@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvwdxvunm3gsa"]
+
+[ext_resource type="Script" path="res://scenes/game_over_screen.gd" id="1_e8f3s"]
+[ext_resource type="PackedScene" uid="uid://bxdkdln1id0pk" path="res://scenes/game_scene.tscn" id="2_axfv1"]
+[ext_resource type="PackedScene" uid="uid://cawu11wck61he" path="res://scenes/main_menu.tscn" id="3_p3g40"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e8f3s")
+game = ExtResource("2_axfv1")
+menu = ExtResource("3_p3g40")
+
+[node name="Retry" type="Button" parent="."]
+offset_left = 288.0
+offset_top = 420.0
+offset_right = 495.0
+offset_bottom = 520.0
+text = "RETRY"
+
+[node name="ReturnToMenu" type="Button" parent="."]
+offset_left = 657.0
+offset_top = 420.0
+offset_right = 864.0
+offset_bottom = 520.0
+text = "RETURN TO MENU"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
