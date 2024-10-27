@@ -35,7 +35,7 @@ corner_radius_bottom_left = 8
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rdwr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_va75a"]
-size = Vector2(87, 137)
+size = Vector2(252, 60)
 
 [node name="GameScene" type="Node2D"]
 
@@ -70,7 +70,6 @@ visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 z_index = -1
 texture = ExtResource("2_njtht")
 
@@ -149,6 +148,46 @@ script = ExtResource("10_bv13r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket2"]
 position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket3" type="Area2D" parent="."]
+position = Vector2(1941, -2444)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket3"]
+position = Vector2(168.5, -37)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket4" type="Area2D" parent="."]
+position = Vector2(-2260, -3269)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket4"]
+position = Vector2(459.5, -51.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket5" type="Area2D" parent="."]
+position = Vector2(-2456, -1348)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket5"]
+position = Vector2(62.5, -35)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket6" type="Area2D" parent="."]
+position = Vector2(-1362, -1008)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket6"]
+position = Vector2(106, -36)
 shape = SubResource("RectangleShape2D_va75a")
 
 [connection signal="oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_changed"]
