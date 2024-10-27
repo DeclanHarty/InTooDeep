@@ -44,7 +44,7 @@ script = ExtResource("1_1kxip")
 unique_name_in_owner = true
 script = ExtResource("1_pcyim")
 oxygen_max = 1000
-permanent_oxygen_depletion_per_seconds = 2.0
+permanent_oxygen_depletion_per_seconds = 3.0
 oxygen_depletion_per_seconds = 20.0
 oxygen_refill_per_seconds = 50.0
 
