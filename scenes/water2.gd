@@ -5,11 +5,9 @@ func _ready():
 	self.body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Enter")
 	%OxygenManager.stop_depleting()
 	%Player.exit_water()
 	
 func _on_body_exited(body: Node2D) -> void:
-	print("Exit")
 	%OxygenManager.start_depleting()
 	%Player.enter_water()

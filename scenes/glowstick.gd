@@ -8,7 +8,7 @@ const TIME_UNTIL_PICKUP_SEC = 1;
 var can_pickup : bool = false
 var rot_v
 
-signal retrieve_glowstick;
+signal retrieve_glowstick(glowstick: Glowstick);
 
 func _ready():
 	var turn_direction = randf_range(-1, 1)
@@ -29,4 +29,4 @@ func _physics_process(delta: float) -> void:
 func _on_interaction_range_area_entered(area: Area2D):
 	if can_pickup and area.name == "PlayerArea2D":
 		queue_free()
-		retrieve_glowstick.emit()
+		retrieve_glowstick.emit(self)
