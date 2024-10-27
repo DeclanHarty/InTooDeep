@@ -46,7 +46,7 @@ script = ExtResource("1_pcyim")
 oxygen_max = 1000
 permanent_oxygen_depletion_per_seconds = 3.0
 oxygen_depletion_per_seconds = 20.0
-oxygen_refill_per_seconds = 50.0
+oxygen_refill_per_seconds = 200.0
 
 [node name="MazeWalls" parent="." instance=ExtResource("1_tmx8u")]
 process_physics_priority = 1
@@ -66,6 +66,7 @@ scale = Vector2(4.567, 700)
 texture = SubResource("GradientTexture1D_672j4")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -159,6 +160,16 @@ collision_mask = 4
 script = ExtResource("10_bv13r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket2"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket3" type="Area2D" parent="."]
+position = Vector2(2111, -2474)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket3"]
 position = Vector2(-1.5, -10.5)
 shape = SubResource("RectangleShape2D_va75a")
 
