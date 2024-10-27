@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=16 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
 [ext_resource type="Script" path="res://scripts/oxygen_manager.gd" id="1_pcyim"]
 [ext_resource type="PackedScene" uid="uid://4rbdgp2kpva1" path="res://scenes/maze_walls.tscn" id="1_tmx8u"]
+[ext_resource type="Script" path="res://scripts/glowstick_manager.gd" id="2_64osl"]
 [ext_resource type="Texture2D" uid="uid://bkan4ybqgutri" path="res://Assets/cave-background-xmrf3cnk7aa9t79a.jpg" id="2_njtht"]
 [ext_resource type="Texture2D" uid="uid://krxmiayby7xl" path="res://icon.svg" id="3_702yu"]
 [ext_resource type="Script" path="res://scripts/water_detection.gd" id="4_6p7kl"]
@@ -72,6 +73,7 @@ scale = Vector2(5.2646, 5.2646)
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("1_a3g5g")]
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
@@ -141,6 +143,9 @@ offset_right = 332.0
 offset_bottom = 493.0
 scale = Vector2(0.105, 0.105)
 texture = ExtResource("8_wc5j5")
+
+[node name="GlowstickManager" type="Node2D" parent="."]
+script = ExtResource("2_64osl")
 
 [connection signal="oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_changed"]
 [connection signal="permanent_oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_permanent_oxygen_changed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnx27j048otog"]
+[gd_scene load_steps=6 format=3 uid="uid://bnx27j048otog"]
 
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_26rad"]
 [ext_resource type="Texture2D" uid="uid://bkan4ybqgutri" path="res://Assets/cave-background-xmrf3cnk7aa9t79a.jpg" id="2_6d0f0"]
@@ -8,12 +8,11 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m0g45"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1mctt"]
-radius = 119.942
-
 [node name="PlayerControlTesting" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 scale = Vector2(17, 1)
@@ -37,13 +36,6 @@ layer = 5
 script = ExtResource("3_1s3t6")
 
 [node name="Player" parent="." instance=ExtResource("1_26rad")]
-collision_mask = 14
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="Area2D2" type="Area2D" parent="Player"]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D2"]
-shape = SubResource("CircleShape2D_1mctt")
