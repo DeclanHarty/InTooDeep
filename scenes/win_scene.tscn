@@ -17,6 +17,7 @@ game = ExtResource("2_ko2yb")
 menu = ExtResource("3_w80bb")
 
 [node name="ReturnToMenu" type="Button" parent="."]
+layout_mode = 0
 offset_left = 469.0
 offset_top = 429.0
 offset_right = 676.0
