@@ -22,7 +22,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func update_velocity(input : Vector2, delta : float):
-	print(out_of_water)
 	var norm_input : Vector2 = input.normalized()
 	
 	var norm_acceleration := ACCELERATION * norm_input
@@ -38,7 +37,6 @@ func update_velocity(input : Vector2, delta : float):
 		
 			
 	if(out_of_water):
-		print(velocity.y)
 		velocity.y = max(velocity.y, 0)
 
 func legacy_update_velocity(input : Vector2, delta : float):
@@ -61,7 +59,6 @@ func legacy_update_velocity(input : Vector2, delta : float):
 		velocity.y = move_toward(velocity.y, 0, FRICTION * delta)
 		
 func exit_water():
-	print("Exited Water")
 	out_of_water = true
 	
 func enter_water():

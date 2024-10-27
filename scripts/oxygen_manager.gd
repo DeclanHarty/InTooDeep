@@ -27,12 +27,12 @@ func _ready():
 	permanent_oxygen_tank = oxygen_max
 
 func _process(delta: float):
-	permanent_oxygen_tank -= permanent_oxygen_depletion_per_seconds * delta
 	permanent_oxygen_tank = max(permanent_oxygen_tank, 0)
 	permanent_oxygen_changed.emit(permanent_oxygen_tank)
 		
 	# the oxygen tank MUST fill or deplete
 	if is_depleting:
+		permanent_oxygen_tank -= permanent_oxygen_depletion_per_seconds * delta
 		oxygen_tank -= oxygen_depletion_per_seconds * delta
 		oxygen_tank = clamp(oxygen_tank, 0, permanent_oxygen_tank)
 		oxygen_changed.emit(oxygen_tank)
