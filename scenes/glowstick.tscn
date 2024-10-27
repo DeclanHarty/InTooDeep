@@ -47,6 +47,7 @@ shape = SubResource("CapsuleShape2D_q27we")
 
 [node name="PointLight2D" type="PointLight2D" parent="CharacterBody2D"]
 color = Color(0.492, 0.82, 0.492, 0.580392)
+energy = 4.05
 texture = ExtResource("2_xuiu7")
 texture_scale = 0.5
 

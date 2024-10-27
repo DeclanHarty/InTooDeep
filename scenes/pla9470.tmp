@@ -32,9 +32,8 @@ offset = Vector2(256, 0)
 script = ExtResource("5_ysap6")
 
 [node name="LocalLight" type="PointLight2D" parent="."]
-color = Color(1, 1, 1, 0.572549)
-energy = 2.37
 texture = ExtResource("3_pms1j")
+texture_scale = 0.52
 
 [connection signal="direction_changed" from="." to="Sprite2D" method="_on_character_body_2d_direction_changed"]
 [connection signal="direction_changed" from="." to="Flashlight" method="_on_character_body_2d_direction_changed"]

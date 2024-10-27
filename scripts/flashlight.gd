@@ -1,8 +1,8 @@
 extends PointLight2D
 
+@onready var anchor : Node2D = $".."
 var current_direction : int = 1
 const LIGHT_DISTANCE_FROM_PLAYER : float = 50.0
-const LIGHT_ROTATION_SPEED : float = 10
 var target_light_position : Vector2 = Vector2(0,0)
 var rotation_target : float
 
