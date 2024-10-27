@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpmwqgmgvqr2w"]
+[gd_scene load_steps=5 format=3 uid="uid://cpmwqgmgvqr2w"]
 
 [ext_resource type="Script" path="res://scripts/game_over_screen.gd" id="1_ug0bh"]
 [ext_resource type="PackedScene" uid="uid://bxdkdln1id0pk" path="res://scenes/game_scene.tscn" id="2_ko2yb"]
 [ext_resource type="PackedScene" uid="uid://cawu11wck61he" path="res://scenes/main_menu.tscn" id="3_w80bb"]
+[ext_resource type="Texture2D" uid="uid://fo0eb60sr7nu" path="res://Assets/pixil-frame-0 (1).png" id="4_42lrs"]
 
 [node name="win_scene" type="Control"]
 layout_mode = 3
@@ -21,5 +22,12 @@ offset_top = 429.0
 offset_right = 676.0
 offset_bottom = 529.0
 text = "RETURN TO MENU"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Pixil-frame-0(1)" type="Sprite2D" parent="."]
+position = Vector2(567, 259)
+scale = Vector2(0.259413, 0.259413)
+texture = ExtResource("4_42lrs")
 
 [connection signal="pressed" from="ReturnToMenu" to="." method="_on_return_to_menu_pressed"]
