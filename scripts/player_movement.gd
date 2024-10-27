@@ -10,6 +10,7 @@ var current_speed
 var out_of_water : bool = false
 
 signal direction_changed(velocity)
+signal water_state_changed(in_water: bool)
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
@@ -60,7 +61,9 @@ func legacy_update_velocity(input : Vector2, delta : float):
 		
 func exit_water():
 	out_of_water = true
+	water_state_changed.emit(true)
 	
 func enter_water():
 	out_of_water = false
+	water_state_changed.emit(false)
 	

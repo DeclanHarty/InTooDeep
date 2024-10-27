@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxdkdln1id0pk"]
+[gd_scene load_steps=20 format=3 uid="uid://bxdkdln1id0pk"]
 
 [ext_resource type="Script" path="res://scenes/game_scene_manager.gd" id="1_1kxip"]
 [ext_resource type="PackedScene" uid="uid://bsiuke4a1y2ao" path="res://scenes/player.tscn" id="1_a3g5g"]
@@ -37,6 +37,15 @@ corner_radius_bottom_left = 8
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_va75a"]
 size = Vector2(252, 60)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_edl6w"]
+size = Vector2(31.5726, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vm4tl"]
+size = Vector2(351.408, 42.7872)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74pl4"]
+size = Vector2(127.179, 65)
+
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_1kxip")
 
@@ -46,7 +55,7 @@ script = ExtResource("1_pcyim")
 oxygen_max = 1000
 permanent_oxygen_depletion_per_seconds = 2.0
 oxygen_depletion_per_seconds = 20.0
-oxygen_refill_per_seconds = 50.0
+oxygen_refill_per_seconds = 200.0
 
 [node name="MazeWalls" parent="." instance=ExtResource("1_tmx8u")]
 process_physics_priority = 1
@@ -66,6 +75,7 @@ scale = Vector2(4.567, 700)
 texture = SubResource("GradientTexture1D_672j4")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -162,9 +172,197 @@ script = ExtResource("10_bv13r")
 position = Vector2(-1.5, -10.5)
 shape = SubResource("RectangleShape2D_va75a")
 
+[node name="Airpocket3" type="Area2D" parent="."]
+position = Vector2(2111, -2474)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket3"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket6" type="Area2D" parent="."]
+position = Vector2(2584, -356)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket6"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket20" type="Area2D" parent="."]
+position = Vector2(336, -2132)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket20"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket7" type="Area2D" parent="."]
+position = Vector2(2662, 741)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket7"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket8" type="Area2D" parent="."]
+position = Vector2(-332, 477)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket8"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket9" type="Area2D" parent="."]
+position = Vector2(-1246, -1034)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket9"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket10" type="Area2D" parent="."]
+position = Vector2(-2373, -1380)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket10"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket11" type="Area2D" parent="."]
+position = Vector2(-3779, -2555)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket11"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket12" type="Area2D" parent="."]
+position = Vector2(-1763, -3911)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket12"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket13" type="Area2D" parent="."]
+position = Vector2(-2182, -3314)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket13"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket14" type="Area2D" parent="."]
+position = Vector2(-1928, -3314)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket14"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket15" type="Area2D" parent="."]
+position = Vector2(-1674, -3311)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket15"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket16" type="Area2D" parent="."]
+position = Vector2(-1423, -3308)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket16"]
+position = Vector2(-1.5, -10.5)
+shape = SubResource("RectangleShape2D_va75a")
+
+[node name="Airpocket5" type="Area2D" parent="."]
+position = Vector2(4757, -448)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket5"]
+position = Vector2(-86.1001, 8.5)
+scale = Vector2(14.88, 1)
+shape = SubResource("RectangleShape2D_edl6w")
+
+[node name="Airpocket17" type="Area2D" parent="."]
+position = Vector2(8067, -2308)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket17"]
+position = Vector2(-86.1001, 8.5)
+scale = Vector2(14.88, 1)
+shape = SubResource("RectangleShape2D_edl6w")
+
+[node name="Airpocket18" type="Area2D" parent="."]
+position = Vector2(818, -5321)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket18"]
+position = Vector2(170, 27.4526)
+rotation = -3.14159
+scale = Vector2(4.51328, -2.40949)
+shape = SubResource("RectangleShape2D_vm4tl")
+
+[node name="Airpocket19" type="Area2D" parent="."]
+position = Vector2(6557, -4037)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket19"]
+position = Vector2(170, 27.4526)
+rotation = -3.14159
+scale = Vector2(4.51328, -2.40949)
+shape = SubResource("RectangleShape2D_vm4tl")
+
+[node name="Airpocket4" type="Area2D" parent="."]
+position = Vector2(2315, -3072)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_bv13r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Airpocket4"]
+position = Vector2(383.7, 8.5)
+scale = Vector2(7.16, 1)
+shape = SubResource("RectangleShape2D_74pl4")
+
 [connection signal="out_of_oxygen" from="OxygenManager" to="." method="_on_oxygen_manager_out_of_oxygen"]
 [connection signal="oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_changed"]
 [connection signal="oxygen_state_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_state_changed"]
 [connection signal="permanent_oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_permanent_oxygen_changed"]
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]
+[connection signal="water_state_changed" from="Player" to="CanvasLayer/GameUI" method="_on_player_water_state_changed"]
 [connection signal="glowstick_num_change" from="GlowstickManager" to="CanvasLayer/GameUI" method="_on_glowstick_manager_glowstick_num_change"]
