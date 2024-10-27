@@ -53,7 +53,7 @@ script = ExtResource("1_1kxip")
 unique_name_in_owner = true
 script = ExtResource("1_pcyim")
 oxygen_max = 1000
-permanent_oxygen_depletion_per_seconds = 2.0
+permanent_oxygen_depletion_per_seconds = 3.0
 oxygen_depletion_per_seconds = 20.0
 oxygen_refill_per_seconds = 200.0
 
@@ -364,4 +364,5 @@ shape = SubResource("RectangleShape2D_74pl4")
 [connection signal="oxygen_state_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_oxygen_state_changed"]
 [connection signal="permanent_oxygen_changed" from="OxygenManager" to="CanvasLayer/GameUI" method="_on_oxygen_manager_permanent_oxygen_changed"]
 [connection signal="child_exiting_tree" from="MazeWalls" to="MazeWalls" method="_on_child_exiting_tree"]
+[connection signal="water_state_changed" from="Player" to="CanvasLayer/GameUI" method="_on_player_water_state_changed"]
 [connection signal="glowstick_num_change" from="GlowstickManager" to="CanvasLayer/GameUI" method="_on_glowstick_manager_glowstick_num_change"]

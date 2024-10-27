@@ -20,6 +20,6 @@ func _input(event):
 		num_of_glowsticks -= 1
 		glowstick_num_change.emit(num_of_glowsticks)
 		
-func _on_retrieve_glowstick(glowstick : Node2D):
+func _on_retrieve_glowstick(_glowstick : Node2D):
 	num_of_glowsticks += 1
 	glowstick_num_change.emit(num_of_glowsticks)
